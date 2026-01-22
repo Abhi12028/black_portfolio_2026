@@ -1,34 +1,37 @@
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PORTFOLIO_DATA } from '../constants';
+import { FadeIn, StaggerContainer, StaggerItem } from './ui/Motion';
 
 const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-24 md:py-40 bg-[#080808]">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 reveal">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4 block underline decoration-white/20 underline-offset-8">
-              02 // Selected Works
-            </span>
-            <h2 className="text-5xl md:text-7xl font-outfit font-bold">Featured Projects</h2>
+        <FadeIn>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4 block underline decoration-white/20 underline-offset-8">
+                02 // Selected Works
+              </span>
+              <h2 className="text-5xl md:text-7xl font-outfit font-bold">Featured Projects</h2>
+            </div>
+            <p className="max-w-xs text-white/40 text-sm tracking-wide">
+              A collection of digital artifacts crafted with precision and passion between 2021 and 2024.
+            </p>
           </div>
-          <p className="max-w-xs text-white/40 text-sm tracking-wide">
-            A collection of digital artifacts crafted with precision and passion between 2021 and 2024.
-          </p>
-        </div>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 gap-32">
+        <StaggerContainer className="grid grid-cols-1 gap-32">
           {PORTFOLIO_DATA.projects.map((project, index) => (
-            <div 
-              key={project.id} 
-              className={`group flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-24 items-center reveal`}
+            <StaggerItem
+              key={project.id}
+              className={`group flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-24 items-center`}
             >
               <div className="flex-1 w-full">
-                <div className="relative overflow-hidden aspect-video bg-white/5 cursor-pointer">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
+                <Link to={`/project/${project.id}`} className="group relative overflow-hidden aspect-video bg-white/5 cursor-pointer block">
+                  <img
+                    src={project.image}
+                    alt={project.title}
                     className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700"></div>
@@ -37,9 +40,9 @@ const Projects: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </div>
-                </div>
+                </Link>
               </div>
-              
+
               <div className="flex-1">
                 <p className="text-xs font-bold uppercase tracking-widest text-white/30 mb-6">{project.category}</p>
                 <h3 className="text-4xl md:text-5xl font-outfit font-bold mb-6 group-hover:text-white transition-colors">{project.title}</h3>
@@ -51,13 +54,13 @@ const Projects: React.FC = () => {
                     </span>
                   ))}
                 </div>
-                <a href={project.link} className="inline-block pb-1 border-b-2 border-white/20 hover:border-white transition-all text-sm font-bold uppercase tracking-[0.2em]">
+                <Link to={`/project/${project.id}`} className="inline-block pb-1 border-b-2 border-white/20 hover:border-white transition-all text-sm font-bold uppercase tracking-[0.2em]">
                   View Case Study
-                </a>
+                </Link>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

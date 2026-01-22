@@ -3,7 +3,7 @@ import { PortfolioData } from './types';
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "ABHISHEK SUTAR",
-  title: "Principal Creative Developer",
+  title: "Solution Developer | Data Engineer",
   about: "Bridging the gap between design and engineering. I specialize in building high-performance web applications with a focus on immersive user experiences and scalable architecture. With over 8 years of experience in the digital space, I transform complex problems into elegant solutions.",
   projects: [
     {
