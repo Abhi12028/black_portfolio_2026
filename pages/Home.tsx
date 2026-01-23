@@ -7,7 +7,7 @@ import Skills from '../components/Skills';
 import Experience from '../components/Experience';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
-import AIChat from '../components/AIChat';
+
 import CustomCursor from '../components/CustomCursor';
 
 const Home: React.FC = () => {
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
                 </footer>
 
                 {/* AI Assistant Tool */}
-                <AIChat />
+
             </div>
         </>
     );
