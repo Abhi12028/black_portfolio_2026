@@ -84,7 +84,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
     {
       category: "Data Engineering",
-      skills: ["Snowflake", "ETL", "Data Warehousing", "Data Modeling", "SQL Optimization", "Snowpark", "Dynamic Tables", "Streams", "Tasks"]
+      skills: ["Snowflake", "dbt", "ETL", "Data Warehousing", "Data Modeling", "SQL Optimization", "Snowpark", "Dynamic Tables", "Streams", "Tasks"]
     },
     {
       category: "Third-Party Integrations",
@@ -96,7 +96,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
     {
       category: "Frontend",
-      skills: ["Vue.js", "Quasar", "HTML", "CSS", "JavaScript"]
+      skills: ["Vue.js", "Quasar Framework", "HTML", "CSS", "JavaScript"]
     },
     {
       category: "Tools & DevOps",
@@ -106,18 +106,31 @@ export const PORTFOLIO_DATA: PortfolioData = {
   experience: [
     {
       company: "Incentius",
-      role: "Solution Developer Intern",
-      period: "Internship",
-      description: "Worked on enterprise applications and data engineering solutions by developing automation scripts, optimizing ETL workflows, improving database performance, and building scalable web applications.",
+      role: "Solutions Developer",
+      period: "Oct 2024 - Present · Full-time (1 yr 10 mos)",
+      location: "Pune Division, Maharashtra, India · On-site",
+      description: "Architecting enterprise data pipelines, high-performance REST API backends, and leading technical project delivery.",
       highlights: [
-        "Architected end-to-end third-party integrations with Zoho, Sumsub, Gupshup, Sentry, and Twilio.",
-        "Developed and optimized ETL workflows.",
-        "Automated repetitive business processes.",
-        "Built backend services using Flask.",
-        "Developed frontend features using Vue.js and Quasar.",
-        "Improved data integrity and processing efficiency.",
-        "Worked with Docker and relational databases."
-      ]
+        "Designed and maintained ETL pipelines for enterprise Snowflake data warehouse using dbt and SQL, processing biomedical datasets with 15+ transformation models.",
+        "Built REST API backend for FoodVessel (B2B platform) using Python and Flask, handling product catalog, order management, and vendor workflows.",
+        "Implemented data quality and conflict resolution logic across source systems, reducing data inconsistencies by ~35%.",
+        "Architected end-to-end third-party API integrations with Zoho, Sumsub, Gupshup, Sentry, and Twilio.",
+        "Led a development team, conducted code reviews, and managed direct client communication across multiple concurrent projects."
+      ],
+      skills: ["Snowflake", "dbt", "SQL", "Flask", "Python", "System Development", "Zoho", "Sumsub", "Twilio"]
+    },
+    {
+      company: "Incentius",
+      role: "Software Developer Intern",
+      period: "Jul 2024 - Oct 2024 · 4 mos",
+      location: "Kharadi, Pune, Maharashtra, India · On-site",
+      description: "Developed modern web application interfaces, backend API endpoints, and utility automation scripts.",
+      highlights: [
+        "Built responsive web applications and interactive UI components using Vue.js and Quasar Framework.",
+        "Developed backend API endpoints and database management scripts using Python and Flask.",
+        "Collaborated in agile team sprints, code debugging, and application performance tuning."
+      ],
+      skills: ["Vue.js", "Quasar Framework", "JavaScript", "Python", "Flask", "HTML/CSS"]
     }
   ],
   contact: {
