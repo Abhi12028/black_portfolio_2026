@@ -1,10 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../constants';
 import { FadeIn, SlideUp } from './ui/Motion';
 import { TiltCard } from './ui/TiltCard';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedStatus, setSubmittedStatus] = useState<'idle' | 'success' | 'fallback'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const { name, email, message } = formData;
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    // 1. If Web3Forms key is configured, send silently via API
+    if (accessKey) {
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            name,
+            email,
+            message,
+            subject: `Portfolio Inquiry from ${name}`,
+            from_name: 'Nexus Portfolio Contact',
+          }),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          setSubmittedStatus('success');
+          setIsSubmitting(false);
+          setFormData({ name: '', email: '', message: '' });
+          setTimeout(() => setSubmittedStatus('idle'), 6000);
+          return;
+        }
+      } catch (err) {
+        console.warn('Web3Forms submission error, triggering mailto fallback', err);
+      }
+    }
+
+    // 2. Direct Mailto Fallback (Opens default mail app pre-filled)
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${name || 'Website Visitor'}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+    const mailtoUrl = `mailto:${PORTFOLIO_DATA.contact.email}?subject=${subject}&body=${body}`;
+
+    setSubmittedStatus('fallback');
+    setIsSubmitting(false);
+
+    setTimeout(() => {
+      window.location.href = mailtoUrl;
+    }, 300);
+
+    setTimeout(() => {
+      setSubmittedStatus('idle');
+      setFormData({ name: '', email: '', message: '' });
+    }, 6000);
+  };
+
   return (
     <section id="contact" className="py-24 md:py-36 bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
       {/* Background Accent Glass Orbs */}
@@ -25,27 +88,79 @@ const Contact: React.FC = () => {
 
         <SlideUp delay={0.2} className="max-w-2xl mx-auto">
           {/* Glassmorphism Form Container */}
-          <TiltCard className="p-8 md:p-12 rounded-3xl border border-white/15 bg-white/[0.02] backdrop-blur-2xl shadow-[0_16px_48px_0_rgba(0,0,0,0.5)] hover:border-cyan-400/40 transition-all duration-500">
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+          <TiltCard className="p-8 md:p-12 rounded-3xl border border-white/15 bg-white/[0.02] backdrop-blur-2xl shadow-[0_16px_48px_0_rgba(0,0,0,0.5)] hover:border-cyan-400/40 transition-all duration-500 relative">
+            <AnimatePresence>
+              {submittedStatus !== 'idle' && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="absolute inset-0 bg-[#080808]/95 backdrop-blur-xl z-30 flex flex-col items-center justify-center p-8 rounded-3xl border border-cyan-400/40"
+                >
+                  <div className="w-14 h-14 rounded-full bg-cyan-400/20 border border-cyan-400/50 flex items-center justify-center text-cyan-300 mb-4 shadow-[0_0_25px_#38bdf8]">
+                    ✓
+                  </div>
+                  <h3 className="text-2xl font-outfit font-bold text-white mb-2">
+                    {submittedStatus === 'success' ? 'Message Sent Successfully!' : 'Opening Email App...'}
+                  </h3>
+                  <p className="text-xs font-mono text-cyan-300 text-center max-w-md leading-relaxed">
+                    {submittedStatus === 'success'
+                      ? `Your message has been sent directly to ${PORTFOLIO_DATA.contact.email}. I will reply shortly!`
+                      : `Opening your email application to send directly to ${PORTFOLIO_DATA.contact.email}.`}
+                  </p>
+                  <button
+                    onClick={() => setSubmittedStatus('idle')}
+                    className="mt-6 px-6 py-2 rounded-full border border-white/20 text-xs font-mono text-white/70 hover:text-white hover:border-white/40 transition-all"
+                  >
+                    Close Window
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
               <div className="space-y-2">
                 <label className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-cyan-300/80">Your Name</label>
-                <input type="text" className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:bg-white/[0.06] outline-none transition-all text-white placeholder-white/20" placeholder="John Doe" />
+                <input 
+                  type="text" 
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:bg-white/[0.06] outline-none transition-all text-white placeholder-white/20" 
+                  placeholder="John Doe" 
+                />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-cyan-300/80">Email Address</label>
-                <input type="email" className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:bg-white/[0.06] outline-none transition-all text-white placeholder-white/20" placeholder="john@example.com" />
+                <input 
+                  type="email" 
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:bg-white/[0.06] outline-none transition-all text-white placeholder-white/20" 
+                  placeholder="john@example.com" 
+                />
               </div>
               <div className="md:col-span-2 space-y-2">
                 <label className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-cyan-300/80">Message</label>
-                <textarea rows={4} className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:bg-white/[0.06] outline-none transition-all resize-none text-white placeholder-white/20" placeholder="How can I help you?"></textarea>
+                <textarea 
+                  rows={4} 
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-400 focus:bg-white/[0.06] outline-none transition-all resize-none text-white placeholder-white/20" 
+                  placeholder="How can I help you?"
+                ></textarea>
               </div>
               <div className="md:col-span-2 pt-4">
                 <motion.button 
+                  type="submit"
+                  disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 bg-white text-black text-xs font-black uppercase tracking-[0.3em] hover:bg-cyan-300 transition-all rounded-xl shadow-[0_8px_24px_rgba(255,255,255,0.2)]"
+                  className="w-full py-4 bg-white text-black text-xs font-black uppercase tracking-[0.3em] hover:bg-cyan-300 transition-all rounded-xl shadow-[0_8px_24px_rgba(255,255,255,0.2)] disabled:opacity-50"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </div>
             </form>
