@@ -51,7 +51,14 @@ export const PORTFOLIO_DATA: PortfolioData = {
       description: "A free, GDPR-compliant web validator engine for German/European e-invoices (XRechnung & ZUGFeRD/Factur-X). Implements official EN 16931 & KoSIT Schematron rule sets via SaxonC XSLT 3.0 to explain failure rules in plain language with exact XML locations.",
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop",
       tags: ["Python", "FastAPI", "Schematron", "SaxonC", "Docker", "Jinja2"],
-      link: "#"
+      link: "#",
+      client: "Open Source / European E-Invoicing",
+      challenge: "Validating European e-invoices (XRechnung and ZUGFeRD) requires strict adherence to official EN 16931 and KoSIT Schematron rule sets. Standard validators produce cryptic XML parser error logs that make line-item debugging difficult for finance and engineering teams.",
+      solution: "Built Invora as a pure, high-performance validation engine in Python using SaxonC XSLT 3.0. It detects XML syntax (UBL, CII, or embedded PDF streams), runs pinned Schematron rule suites, and maps failure SVRL node paths into clear English and German explanations specifying the exact XML element to fix.",
+      galleryImages: [
+        "https://images.unsplash.com/photo-1554224154-26032ffc0d07?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop"
+      ]
     },
     {
       id: "2",
@@ -60,25 +67,14 @@ export const PORTFOLIO_DATA: PortfolioData = {
       description: "Designed and optimized ETL workflows, automated data processing, and improved pipeline performance for enterprise-scale data operations.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
       tags: ["Snowflake", "SQL", "Python", "ETL"],
-      link: "#"
-    },
-    {
-      id: "3",
-      title: "AnimeFlix",
-      category: "Full-Stack OTT Platform",
-      description: "A full-stack OTT platform designed for anime enthusiasts featuring authentication, content browsing, and responsive UI.",
-      image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200&auto=format&fit=crop",
-      tags: ["React", "PostgreSQL", "JavaScript"],
-      link: "#"
-    },
-    {
-      id: "4",
-      title: "HP Tattoo",
-      category: "Modern Web Design",
-      description: "Modern landing page with responsive design, SEO optimization, and smooth user experience.",
-      image: "https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?q=80&w=1200&auto=format&fit=crop",
-      tags: ["HTML", "CSS", "JavaScript"],
-      link: "#"
+      link: "#",
+      client: "Enterprise Data Systems",
+      challenge: "Enterprise operations generated vast streams of data, causing query performance bottlenecks and data consistency issues across reporting platforms.",
+      solution: "Architected a cloud data warehouse on Snowflake utilizing Snowpark Python, Dynamic Tables, and automated tasks to accelerate pipeline execution and ensure reliable analytics.",
+      galleryImages: [
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+      ]
     }
   ],
   skillCategories: [

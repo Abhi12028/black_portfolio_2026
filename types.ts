@@ -7,6 +7,10 @@ export interface Project {
   image: string;
   tags: string[];
   link: string;
+  client?: string;
+  challenge?: string;
+  solution?: string;
+  galleryImages?: string[];
 }
 
 export interface SkillCategory {
