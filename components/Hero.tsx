@@ -61,6 +61,17 @@ const Hero: React.FC = () => {
                   View Projects
                 </a>
                 <a
+                  href={PORTFOLIO_DATA.contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3.5 bg-[#0A66C2] text-white text-xs font-black uppercase tracking-widest hover:bg-[#004182] transition-all shadow-lg hover:shadow-blue-500/20 rounded-sm flex items-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+                <a
                   href="#contact"
                   className="px-6 py-3.5 border border-white/20 hover:border-cyan-400/60 text-white text-xs font-black uppercase tracking-widest hover:bg-white/5 transition-all rounded-sm"
                 >

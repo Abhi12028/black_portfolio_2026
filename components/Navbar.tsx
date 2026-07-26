@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { PORTFOLIO_DATA } from '../constants';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -66,6 +67,17 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <a 
+            href={PORTFOLIO_DATA.contact.linkedin} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 border border-white/20 hover:border-cyan-400 text-white hover:text-cyan-300 transition-all rounded-sm flex items-center justify-center"
+            title="LinkedIn Profile"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/>
+            </svg>
+          </a>
+          <a 
             href="/#contact" 
             onClick={(e) => handleNavClick(e, '#contact')}
             className="px-5 py-2 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-cyan-300 transition-all rounded-sm cursor-pointer"
@@ -100,9 +112,20 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <a 
+            href={PORTFOLIO_DATA.contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 px-8 py-3 bg-[#0A66C2] text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/>
+            </svg>
+            Connect on LinkedIn
+          </a>
+          <a 
             href="/#contact" 
             onClick={(e) => handleNavClick(e, '#contact')}
-            className="mt-4 px-8 py-3 bg-white text-black text-xs font-bold uppercase tracking-widest"
+            className="px-8 py-3 bg-white text-black text-xs font-bold uppercase tracking-widest"
           >
             Hire Me
           </a>

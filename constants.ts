@@ -7,8 +7,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
   about: [
     "I'm Abhishek Sutar, a Solution Developer with hands-on experience in Data Engineering, ETL automation, SQL development, and full-stack web applications.",
     "Over the past year, I've worked on building automation pipelines, optimizing database processes, and developing applications using Python, Flask, Vue.js, Docker, and PostgreSQL. My experience includes improving ETL workflows, ensuring data integrity, and creating scalable backend solutions.",
-    "Currently, I'm expanding my expertise in Snowflake, modern data architecture, cloud technologies, and analytics engineering while continuously learning industry best practices.",
-    "I enjoy solving complex technical problems and building efficient systems that deliver real business value."
+    "I have extensive hands-on experience engineering end-to-end third-party integrations with platforms like Zoho, Sumsub, Gupshup, Sentry, and Twilio for automated workflows, identity verification (KYC), messaging, and real-time monitoring.",
+    "Currently, I'm expanding my expertise in Snowflake, modern data architecture, cloud technologies, and analytics engineering while continuously learning industry best practices."
   ],
   goal: "I'm focused on becoming a skilled Data Engineer, specializing in Snowflake, cloud data platforms, and scalable data infrastructure. I believe in continuous learning, writing clean code, and building solutions that make an impact.",
   services: [
@@ -28,19 +28,19 @@ export const PORTFOLIO_DATA: PortfolioData = {
       icon: "Server"
     },
     {
+      title: "Third-Party API Integrations",
+      description: "Building robust end-to-end integrations with Zoho, Sumsub (KYC), Gupshup, Twilio, and Sentry for automated business workflows.",
+      icon: "Cpu"
+    },
+    {
       title: "Frontend Development",
       description: "Building responsive user interfaces with Vue.js, Quasar Framework, HTML, CSS, and JavaScript.",
       icon: "Layout"
     },
     {
-      title: "Database Design",
-      description: "Working with PostgreSQL, MySQL, and Snowflake to create efficient and reliable data models.",
+      title: "Database Design & Automation",
+      description: "Working with PostgreSQL, MySQL, and Snowflake to create efficient data models and automated repetitive processes.",
       icon: "Layers"
-    },
-    {
-      title: "Automation",
-      description: "Automating repetitive workflows to improve efficiency, reduce manual effort, and increase reliability.",
-      icon: "Cpu"
     }
   ],
   projects: [
@@ -62,7 +62,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
     {
       id: "2",
-      title: "Puma Data Warehouse",
+      title: "Enterprise Data Warehouse",
       category: "Data Engineering / Cloud DW",
       description: "Designed and optimized ETL workflows, automated data processing, and improved pipeline performance for enterprise-scale data operations.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
@@ -87,20 +87,20 @@ export const PORTFOLIO_DATA: PortfolioData = {
       skills: ["Snowflake", "ETL", "Data Warehousing", "Data Modeling", "SQL Optimization", "Snowpark", "Dynamic Tables", "Streams", "Tasks"]
     },
     {
-      category: "Backend",
-      skills: ["Flask", "REST APIs", "Docker"]
+      category: "Third-Party Integrations",
+      skills: ["Zoho CRM/Suite", "Sumsub (KYC)", "Gupshup (Messaging)", "Sentry (Error Monitoring)", "Twilio (SMS/Voice)", "Webhooks & REST APIs"]
+    },
+    {
+      category: "Backend & Databases",
+      skills: ["Flask", "REST APIs", "Snowflake", "PostgreSQL", "MySQL", "Docker"]
     },
     {
       category: "Frontend",
       skills: ["Vue.js", "Quasar", "HTML", "CSS", "JavaScript"]
     },
     {
-      category: "Databases",
-      skills: ["Snowflake", "PostgreSQL", "MySQL"]
-    },
-    {
-      category: "Tools",
-      skills: ["Git", "Docker", "Linux", "VS Code", "Postman"]
+      category: "Tools & DevOps",
+      skills: ["Git", "Docker", "Linux", "VS Code", "Postman", "Sentry"]
     }
   ],
   experience: [
@@ -110,6 +110,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       period: "Internship",
       description: "Worked on enterprise applications and data engineering solutions by developing automation scripts, optimizing ETL workflows, improving database performance, and building scalable web applications.",
       highlights: [
+        "Architected end-to-end third-party integrations with Zoho, Sumsub, Gupshup, Sentry, and Twilio.",
         "Developed and optimized ETL workflows.",
         "Automated repetitive business processes.",
         "Built backend services using Flask.",
@@ -121,8 +122,9 @@ export const PORTFOLIO_DATA: PortfolioData = {
   ],
   contact: {
     email: "abhishek.sutar@example.com",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/sutarabhishek/",
     github: "https://github.com",
     portfolio: "https://portfolio.com"
   }
 };
+
