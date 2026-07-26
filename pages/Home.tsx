@@ -27,7 +27,7 @@ const Home: React.FC = () => {
 
     return (
         <>
-            <div className="relative selection:bg-cyan-300 selection:text-black md:cursor-none">
+            <div className="relative selection:bg-cyan-300 selection:text-black">
                 <div className="hidden md:block">
                     <CustomCursor />
                 </div>

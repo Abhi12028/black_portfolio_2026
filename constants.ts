@@ -134,7 +134,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     }
   ],
   contact: {
-    email: "abhishek.sutar@example.com",
+    email: "abhishek.arun.sutar@gmail.com",
     linkedin: "https://www.linkedin.com/in/sutarabhishek/",
     github: "https://github.com",
     portfolio: "https://portfolio.com"
