@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -10,6 +11,20 @@ import Contact from '../components/Contact';
 import CustomCursor from '../components/CustomCursor';
 
 const Home: React.FC = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.hash) {
+            const targetId = location.hash.replace('#', '');
+            setTimeout(() => {
+                const element = document.getElementById(targetId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        }
+    }, [location]);
+
     return (
         <>
             <div className="relative selection:bg-cyan-300 selection:text-black md:cursor-none">

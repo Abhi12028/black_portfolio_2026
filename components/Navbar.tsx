@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,28 +24,51 @@ const Navbar: React.FC = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+
+    if (location.pathname !== '/') {
+      navigate('/' + href);
+    } else {
+      const targetId = href.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-black/80 backdrop-blur-md border-b border-white/10' : 'py-8 bg-transparent'}`}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <a href="#" className="font-outfit font-black text-xl tracking-tighter z-50 flex items-center gap-2">
+        <Link 
+          to="/" 
+          onClick={(e) => handleNavClick(e, '#')} 
+          className="font-outfit font-black text-xl tracking-tighter z-50 flex items-center gap-2"
+        >
           <span>ABHISHEK</span>
           <span className="text-cyan-400 font-mono text-sm font-light">/ DE</span>
-        </a>
+        </Link>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
-              href={link.href} 
-              className="text-xs font-semibold text-white/60 hover:text-cyan-300 transition-colors tracking-widest uppercase"
+              href={`/${link.href}`}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="text-xs font-semibold text-white/60 hover:text-cyan-300 transition-colors tracking-widest uppercase cursor-pointer"
             >
               {link.name}
             </a>
           ))}
           <a 
-            href="#contact" 
-            className="px-5 py-2 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-cyan-300 transition-all rounded-sm"
+            href="/#contact" 
+            onClick={(e) => handleNavClick(e, '#contact')}
+            className="px-5 py-2 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-cyan-300 transition-all rounded-sm cursor-pointer"
           >
             Hire Me
           </a>
@@ -66,16 +92,16 @@ const Navbar: React.FC = () => {
           {navLinks.map((link) => (
             <a 
               key={link.name} 
-              href={link.href} 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-outfit font-bold text-white/60 hover:text-cyan-300 transition-colors tracking-widest uppercase"
+              href={`/${link.href}`} 
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="text-2xl font-outfit font-bold text-white/60 hover:text-cyan-300 transition-colors tracking-widest uppercase cursor-pointer"
             >
               {link.name}
             </a>
           ))}
           <a 
-            href="#contact" 
-            onClick={() => setIsMobileMenuOpen(false)}
+            href="/#contact" 
+            onClick={(e) => handleNavClick(e, '#contact')}
             className="mt-4 px-8 py-3 bg-white text-black text-xs font-bold uppercase tracking-widest"
           >
             Hire Me
