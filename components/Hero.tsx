@@ -15,9 +15,10 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col gap-6">
           <FadeIn delay={0.2}>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              <p className="text-xs md:text-sm font-semibold tracking-widest uppercase text-cyan-300">
+            {/* Glassmorphism Title Badge */}
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-400/30 bg-white/[0.03] backdrop-blur-xl shadow-[0_8px_32px_0_rgba(56,189,248,0.15)]">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#38bdf8]"></span>
+              <p className="text-xs md:text-sm font-mono font-semibold tracking-widest uppercase text-cyan-300">
                 {PORTFOLIO_DATA.title}
               </p>
             </div>
@@ -47,16 +48,25 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-4">
             <SlideUp delay={1.0} className="max-w-2xl">
-              <p className="text-white/70 text-lg md:text-xl leading-relaxed font-light">
+              <p className="text-white/75 text-lg md:text-xl leading-relaxed font-light">
                 {PORTFOLIO_DATA.heroSubtitle}
               </p>
+
+              {/* Glassmorphism Specialty Badges */}
+              <div className="flex flex-wrap gap-3 mt-6">
+                {["Snowflake DW", "dbt Data Pipelines", "Python & Flask", "5+ Integrations"].map((tag) => (
+                  <span key={tag} className="px-3.5 py-1.5 rounded-lg bg-white/[0.04] backdrop-blur-xl border border-white/10 text-xs font-mono text-cyan-300/90 shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+                    ⚡ {tag}
+                  </span>
+                ))}
+              </div>
             </SlideUp>
 
             <FadeIn delay={1.2}>
               <div className="flex flex-wrap items-center gap-4">
                 <a
                   href="#projects"
-                  className="px-6 py-3.5 bg-white text-black text-xs font-black uppercase tracking-widest hover:bg-cyan-300 transition-all shadow-lg hover:shadow-cyan-500/20 rounded-sm"
+                  className="px-6 py-3.5 bg-white text-black text-xs font-black uppercase tracking-widest hover:bg-cyan-300 transition-all shadow-[0_8px_24px_rgba(255,255,255,0.2)] rounded-lg"
                 >
                   View Projects
                 </a>
@@ -64,7 +74,7 @@ const Hero: React.FC = () => {
                   href={PORTFOLIO_DATA.contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3.5 bg-[#0A66C2] text-white text-xs font-black uppercase tracking-widest hover:bg-[#004182] transition-all shadow-lg hover:shadow-blue-500/20 rounded-sm flex items-center gap-2"
+                  className="px-6 py-3.5 bg-[#0A66C2] text-white text-xs font-black uppercase tracking-widest hover:bg-[#004182] transition-all shadow-[0_8px_24px_rgba(10,102,194,0.3)] rounded-lg flex items-center gap-2"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/>
@@ -73,20 +83,9 @@ const Hero: React.FC = () => {
                 </a>
                 <a
                   href="#contact"
-                  className="px-6 py-3.5 border border-white/20 hover:border-cyan-400/60 text-white text-xs font-black uppercase tracking-widest hover:bg-white/5 transition-all rounded-sm"
+                  className="px-6 py-3.5 bg-white/[0.05] backdrop-blur-xl border border-white/20 hover:border-cyan-400/60 text-white text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all rounded-lg shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]"
                 >
                   Contact Me
-                </a>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert("Resume download link placeholder. Replace with your actual resume file path.");
-                  }}
-                  className="px-6 py-3.5 border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest hover:text-white hover:border-white/30 transition-all rounded-sm flex items-center gap-2"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Resume
                 </a>
               </div>
             </FadeIn>
