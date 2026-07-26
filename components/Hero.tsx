@@ -5,7 +5,7 @@ import HeroBackground from './HeroBackground';
 import { StaggerContainer, StaggerItem, FadeIn, SlideUp } from './ui/Motion';
 
 const Hero: React.FC = () => {
-  const letters = PORTFOLIO_DATA.name.split(' ');
+  const nameParts = PORTFOLIO_DATA.name.split(' ');
 
   return (
     <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
@@ -13,16 +13,19 @@ const Hero: React.FC = () => {
       <HeroBackground />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
           <FadeIn delay={0.2}>
-            <p className="text-sm md:text-base font-medium tracking-[0.3em] uppercase text-white/40">
-              {PORTFOLIO_DATA.title}
-            </p>
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <p className="text-xs md:text-sm font-semibold tracking-widest uppercase text-cyan-300">
+                {PORTFOLIO_DATA.title}
+              </p>
+            </div>
           </FadeIn>
 
-          <StaggerContainer className="font-outfit font-black text-[clamp(4rem,15vw,14rem)] leading-[0.85] tracking-tighter uppercase mb-6">
-            {letters.map((word, idx) => (
-              <StaggerItem key={idx} className="block last:text-white/20">
+          <StaggerContainer className="font-outfit font-black text-[clamp(3.5rem,11vw,10rem)] leading-[0.9] tracking-tighter uppercase mb-2">
+            {nameParts.map((word, idx) => (
+              <StaggerItem key={idx} className="block last:text-white/30">
                 {word.split('').map((char, charIdx) => (
                   <motion.span
                     key={charIdx}
@@ -30,7 +33,7 @@ const Hero: React.FC = () => {
                     animate={{ opacity: 1, y: 0, rotateX: 0 }}
                     transition={{
                       duration: 0.8,
-                      delay: 0.5 + (idx * 0.3) + (charIdx * 0.05),
+                      delay: 0.4 + (idx * 0.2) + (charIdx * 0.04),
                       ease: [0.215, 0.610, 0.355, 1.000]
                     }}
                     className="inline-block origin-bottom"
@@ -38,31 +41,41 @@ const Hero: React.FC = () => {
                     {char}
                   </motion.span>
                 ))}
-                {/* Add space if not last word, handled by block display but for safety */}
               </StaggerItem>
             ))}
           </StaggerContainer>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mt-8">
-            <SlideUp delay={1.2} className="max-w-md">
-              <p className="text-white/50 text-lg leading-relaxed">
-                Crafting premium digital experiences through high-performance engineering and minimal aesthetic design.
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-4">
+            <SlideUp delay={1.0} className="max-w-2xl">
+              <p className="text-white/70 text-lg md:text-xl leading-relaxed font-light">
+                {PORTFOLIO_DATA.heroSubtitle}
               </p>
             </SlideUp>
 
-            <FadeIn delay={1.5}>
-              <div className="flex items-center gap-6">
-                <a href="#projects" className="group flex items-center gap-4">
-                  <motion.span
-                    whileHover={{ scale: 1.1, borderColor: "rgba(255,255,255,1)" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center transition-colors"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform rotate-45 group-hover:rotate-90 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                  </motion.span>
-                  <span className="text-sm font-bold uppercase tracking-widest text-white/60 group-hover:text-white transition-colors">Scroll to View</span>
+            <FadeIn delay={1.2}>
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href="#projects"
+                  className="px-6 py-3.5 bg-white text-black text-xs font-black uppercase tracking-widest hover:bg-cyan-300 transition-all shadow-lg hover:shadow-cyan-500/20 rounded-sm"
+                >
+                  View Projects
+                </a>
+                <a
+                  href="#contact"
+                  className="px-6 py-3.5 border border-white/20 hover:border-cyan-400/60 text-white text-xs font-black uppercase tracking-widest hover:bg-white/5 transition-all rounded-sm"
+                >
+                  Contact Me
+                </a>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert("Resume download link placeholder. Replace with your actual resume file path.");
+                  }}
+                  className="px-6 py-3.5 border border-white/10 text-white/70 text-xs font-bold uppercase tracking-widest hover:text-white hover:border-white/30 transition-all rounded-sm flex items-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Resume
                 </a>
               </div>
             </FadeIn>

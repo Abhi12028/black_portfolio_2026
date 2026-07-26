@@ -9,10 +9,15 @@ export interface Project {
   link: string;
 }
 
-export interface Skill {
-  name: string;
-  level: number;
-  icon: string;
+export interface SkillCategory {
+  category: string;
+  skills: string[];
+}
+
+export interface Service {
+  title: string;
+  description: string;
+  icon?: string;
 }
 
 export interface Experience {
@@ -20,6 +25,7 @@ export interface Experience {
   role: string;
   period: string;
   description: string;
+  highlights?: string[];
 }
 
 export interface Testimonial {
@@ -32,9 +38,19 @@ export interface Testimonial {
 export interface PortfolioData {
   name: string;
   title: string;
-  about: string;
+  heroSubtitle: string;
+  about: string[];
+  goal: string;
+  services: Service[];
   projects: Project[];
-  skills: Skill[];
+  skillCategories: SkillCategory[];
   experience: Experience[];
-  testimonials: Testimonial[];
+  testimonials?: Testimonial[];
+  contact: {
+    email: string;
+    linkedin: string;
+    github: string;
+    portfolio?: string;
+  };
 }
+

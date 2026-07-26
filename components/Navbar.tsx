@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 const Navbar: React.FC = () => {
@@ -15,6 +14,7 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'About', href: '#about' },
+    { name: 'What I Do', href: '#services' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
@@ -22,10 +22,11 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-glass border-b border-white/5' : 'py-8 bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-black/80 backdrop-blur-md border-b border-white/10' : 'py-8 bg-transparent'}`}>
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <a href="#" className="font-outfit font-black text-2xl tracking-tighter z-50">
-          NEXUS<span className="text-white/40">.</span>
+        <a href="#" className="font-outfit font-black text-xl tracking-tighter z-50 flex items-center gap-2">
+          <span>ABHISHEK</span>
+          <span className="text-cyan-400 font-mono text-sm font-light">/ DE</span>
         </a>
         
         {/* Desktop Menu */}
@@ -34,14 +35,14 @@ const Navbar: React.FC = () => {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-white/60 hover:text-white transition-colors tracking-widest uppercase"
+              className="text-xs font-semibold text-white/60 hover:text-cyan-300 transition-colors tracking-widest uppercase"
             >
               {link.name}
             </a>
           ))}
           <a 
             href="#contact" 
-            className="px-6 py-2 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-white/90 transition-all"
+            className="px-5 py-2 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-cyan-300 transition-all rounded-sm"
           >
             Hire Me
           </a>
@@ -67,7 +68,7 @@ const Navbar: React.FC = () => {
               key={link.name} 
               href={link.href} 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-3xl font-outfit font-bold text-white/60 hover:text-white transition-colors tracking-widest uppercase"
+              className="text-2xl font-outfit font-bold text-white/60 hover:text-cyan-300 transition-colors tracking-widest uppercase"
             >
               {link.name}
             </a>
@@ -75,7 +76,7 @@ const Navbar: React.FC = () => {
           <a 
             href="#contact" 
             onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-4 px-10 py-4 bg-white text-black text-sm font-bold uppercase tracking-widest"
+            className="mt-4 px-8 py-3 bg-white text-black text-xs font-bold uppercase tracking-widest"
           >
             Hire Me
           </a>
